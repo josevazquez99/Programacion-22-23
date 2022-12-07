@@ -68,38 +68,32 @@ Created on Nov 23, 2022
 # print(buscarPalabraEscondida())
 
 #Ejercicio 7
-texto="hola mundo".lower()
-palabra="mundo".lower()
-sustituta="persona".lower()
-def sustituirPalabra(texto,palabra,sustituta):
-    cont=0
-    empieza=0
-    acum=0
-    listaCadena=[]
-    for i in range(len(texto)):
-        if texto[i]==palabra[cont]:
-            if acum==0:
-                empieza=i
-                acum=1
-            cont=cont+1
+def sustituir(cadena,palabra,sustituta):
+    resultado,tmp="",""
+    ipalabra=0
+    for i in range(len(cadena)):
+        
+        
+        if cadena[i]==palabra[ipalabra]:
+            tmp+=palabra[ipalabra]
+            ipalabra+=1
+            
+            if len(palabra)==ipalabra:
+                ipalabra=0
+                
+                tmp=""
+                resultado+=sustituta
+                
+                #sustituir
+        
+            
         else:
-            acum=0
-            cont=0
+            resultado+=tmp+cadena[i]
+            ipalabra=0
+    
+    return resultado
 
-    for i in texto:
-        listaCadena.append(i)
-
-    for i in range(cont):
-        del listaCadena[empieza]
-
-    for i in range(len(sustituta)):
-        listaCadena.insert(empieza+i, sustituta[i])
-    texto=""
-    for i in listaCadena:
-        texto+=i
-    return texto
-
-print(sustituirPalabra(texto, palabra, sustituta))
+print(sustituir("la bicicleta esta nueva", "nueva", "vieja"))
 
 #Ejercicio 8 
 # vocales=['a','e','i','o','u']
